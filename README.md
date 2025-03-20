@@ -30,7 +30,7 @@ No additional setup needed, just run it in your favorite browser.
 
 ## 🔗 Live Demo
 
-👉 [Click here to use the Player](https://akashbhardwaj0703.github.io/Spotify-Clone/)
+👉 [Click here to use the music player](https://akashbhardwaj0703.github.io/Spotify-Clone/)
 
 ## 🛠 Technologies Used
 
