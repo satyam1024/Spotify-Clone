@@ -16,8 +16,6 @@ A fully responsive Spotify clone built using HTML, CSS, and JavaScript, featurin
 
 🎵 Home Page
 
-
-
 🎶 Playing Music
 
 ## 💻 Installation & Setup
@@ -32,7 +30,7 @@ No additional setup needed, just run it in your favorite browser.
 
 ## 🔗 Live Demo
 
-👉 
+👉 [Click here to use the music player](https://akashbhardwaj0703.github.io/Spotify-Clone/)
 
 ## 🛠 Technologies Used
 
