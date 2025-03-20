@@ -36,11 +36,11 @@ No additional setup needed, just run it in your favorite browser.
 
 ## 🛠 Technologies Used
 
-HTML – Structure of the webpage.
+**HTML** – Structure of the webpage.
 
-CSS – Styling for a modern and responsive design.
+**CSS** – Styling for a modern and responsive design.
 
-JavaScript – Handles audio playback, interactions, and UI updates.
+**JavaScript** – Handles audio playback, interactions, and UI updates.
 
 🌟 Show Some Love
 
