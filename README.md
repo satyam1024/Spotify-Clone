@@ -4,12 +4,12 @@ A fully responsive Spotify clone built using HTML, CSS, and JavaScript, featurin
 
 ## 🚀 Features
 
-✅ Play/Pause Music – Control song playback effortlessly.
-✅ Seek Bar Control – Click and drag to seek through songs.
-✅ Song Progress Update – Displays the current time and total duration.
-✅ Playlist Selection – Switch between different tracks easily.
-✅ Responsive UI – Adapts seamlessly across mobile and desktop.
-✅ Real-Time UI Updates – Smooth animations and dynamic updates.
+✅ Play/Pause Music – Control song playback effortlessly.<br>
+✅ Seek Bar Control – Click and drag to seek through songs.<br>
+✅ Song Progress Update – Displays the current time and total duration.<br>
+✅ Playlist Selection – Switch between different tracks easily.<br>
+✅ Responsive UI – Adapts seamlessly across mobile and desktop.<br>
+✅ Real-Time UI Updates – Smooth animations and dynamic updates.<br>
 ✅ Volume Control – Change volume easily.
 
 ## 📸 Screenshots
@@ -22,13 +22,11 @@ A fully responsive Spotify clone built using HTML, CSS, and JavaScript, featurin
 
 ## 💻 Installation & Setup
 
-1. Clone the repository
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/akashbhardwaj0703/Spotify-Clone.git
 
-git clone https://github.com/akashBhardwaj0703/spotify-clone.git
-cd spotify-clone
-
-
-2. Open index.html in a browser
+2. Open index.html in a browser.
 
 No additional setup needed, just run it in your favorite browser.
 
