@@ -1,8 +1,8 @@
-#Spotify Clone 🎵
+# Spotify Clone 🎵
 
 A fully responsive Spotify clone built using HTML, CSS, and JavaScript, featuring a sleek UI and essential music player functionalities.
 
-##🚀 Features
+## 🚀 Features
 
 ✅ Play/Pause Music – Control song playback effortlessly.
 ✅ Seek Bar Control – Click and drag to seek through songs.
@@ -12,7 +12,7 @@ A fully responsive Spotify clone built using HTML, CSS, and JavaScript, featurin
 ✅ Real-Time UI Updates – Smooth animations and dynamic updates.
 ✅ Volume Control – Change volume easily.
 
-##📸 Screenshots
+## 📸 Screenshots
 
 🎵 Home Page
 
@@ -20,7 +20,7 @@ A fully responsive Spotify clone built using HTML, CSS, and JavaScript, featurin
 
 🎶 Playing Music
 
-##💻 Installation & Setup
+## 💻 Installation & Setup
 
 1. Clone the repository
 
@@ -32,11 +32,11 @@ cd spotify-clone
 
 No additional setup needed, just run it in your favorite browser.
 
-##🔗 Live Demo
+## 🔗 Live Demo
 
 👉 
 
-##🛠 Technologies Used
+## 🛠 Technologies Used
 
 HTML – Structure of the webpage.
 
