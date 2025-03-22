@@ -1,0 +1,106 @@
+.border{
+    border: 2px solid black;
+}
+.flex{
+    display: flex;
+}
+.justify-center{
+    justify-content: center;
+}
+.align-items{
+    align-items: center;
+}
+
+.bg-black{
+    background-color: black;
+    color: white;
+}
+
+.invert{
+    filter: invert(1);
+}
+
+.bg-gray{
+    background-color: #121212;
+}
+.rounded{
+    border-radius: 7px;
+}
+.m1{
+    margin: 5px;
+}
+.p1{
+    padding: 10px;
+}
+
+
+/* Scrollbar for WebKit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e1e; /* Dark track */
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444; /* Dark gray thumb */
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #666; /* Lighter gray on hover */
+}
+
+/* Scrollbar for Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #444 #1e1e1e;
+}
+
+
+
+
+#rangeInp {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 90%;
+    height: 4px; /* Slim track */
+    background: #ccc; /* Track color */
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Custom thumb (slider handle) for Webkit browsers (Chrome, Safari) */
+#rangeInp::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px; /* Slimmer handle */
+    height: 10px;
+    background: #e26803;; /* Black handle */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Custom thumb for Firefox */
+#rangeInp::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: #e26803;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Add hover effect for better UX */
+#rangeInp:hover {
+    background: #aaa;
+}
+
+#rangeInp::-webkit-slider-thumb:hover {
+    background: #e26803;;
+}
+
+

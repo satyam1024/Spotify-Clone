@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify - Web Player: Music for everyone</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="utility.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/utility.css">
 </head>
 
 <body>
@@ -109,35 +109,6 @@
 
                 <div class="cardContainer">
 
-                    <div class="card rounded">
-                        
-                        <div class="play">
-
-                            <img src="img/playButton2.svg" alt="">
-
-                        </div>
-                        <img class="rounded" src="img/card1.jpg" alt="card">
-                        <h2>Happy Hits!</h2>
-                        <p>Hits to boost your mood and fill you with happiness!</p>
-                    </div>
-
-
-
-                    <div class="card rounded">
-                        
-                        <div class="play">
-
-                            <img src="img/playButton2.svg" alt="">
-
-                        </div>
-                        <img class="rounded" src="img/card1.jpg" alt="card">
-                        <h2>Happy Hits!</h2>
-                        <p>Hits to boost your mood and fill you with happiness!</p>
-                    </div>
-
-                    
-
-
                 </div>
 
                 <div class="playbar">
@@ -161,7 +132,16 @@
                     </div>
 
 
-                    <div class="songtime"></div>
+                    <div class="timeVolume">
+                        <div class="songtime"></div>
+                        <div class="volume">
+                            <img src="img/volume.svg" width="22px" alt="volume">
+                            <div class="range">
+                                <input type="range" name="volume" id="rangeInp">
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
                 
             </div>
@@ -169,7 +149,7 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
