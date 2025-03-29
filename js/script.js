@@ -28,7 +28,7 @@ function secondToMinuteSecond(seconds) {
 async function getSongs(folder) {
 
     currFolder = folder;
-    let a = await fetch(`https://capable-marshmallow-1396b2.netlify.app/songs/${folder}/`)
+    let a = await fetch(`/.netlify/functions/getSongs?folder=${folder}`)
     let responses = await a.text();
 
 
@@ -53,20 +53,18 @@ async function getSongs(folder) {
 }
 
 function playSong(track, pause = false) {
+    track = track.replaceAll("%20", " ").replaceAll(".mp3", "");
+    curSong.src = `/.netlify/functions/getSongs?folder=${currFolder}&track=${track}.mp3`;
 
-
-    track = track.replaceAll("%20", " ").replaceAll(".mp3", "")
-    curSong.src = `https://capable-marshmallow-1396b2.netlify.app/songs/${currFolder}/` + track + ".mp3";
-
-    play.src = "img/play-button2.svg"
+    play.src = "img/play-button2.svg";
     if (!pause) {
         curSong.play();
-        play.src = "img/pause.svg"
+        play.src = "img/pause.svg";
     }
     document.querySelector(".songinfo").innerHTML = track;
-    document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
-
+    document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
 }
+
 
 async function helper() {
     if (!is) {
@@ -117,62 +115,47 @@ async function helper() {
 
 
 async function displayAlbum() {
-    // currFolder = folder;
-    let a = await fetch(`https://capable-marshmallow-1396b2.netlify.app/songs/`)
-    // console.log(a)
+    let a = await fetch(`/.netlify/functions/getAlbums`);
     let responses = await a.text();
 
-    let div = document.createElement("div")
+    let div = document.createElement("div");
     div.innerHTML = responses;
 
     let anchors = div.getElementsByTagName("a");
+    let array = Array.from(anchors);
 
-    let array = Array.from(anchors)
-
-    for(let i =0; i<array.length; i++){
-        const e = array[i];
+    for (let e of array) {
         if (e.href.includes("/songs")) {
-            let folder = (e.href.split('/').splice(-2)[0]);
-            //Now get metadeta of the folder
+            let folder = e.href.split('/').slice(-2)[0];
 
-            let a = await fetch(`https://capable-marshmallow-1396b2.netlify.app/songs/${folder}/info.json`)
+            let a = await fetch(`/.netlify/functions/getAlbumInfo?folder=${folder}`);
             let responses = await a.json();
-            // console.log(responses)
 
             let cardContiner = document.querySelector(".cardContainer");
-
-            cardContiner.innerHTML = cardContiner.innerHTML + `<div class="card rounded" data-folder="${folder}">
-
-                <div class="play">
-                    <img  src="img/playButton2.svg" alt="">
-                </div>
-                <img class="rounded" width="160px" height="160px" src="/songs/${folder}/cover.jpg" alt="card">
+            cardContiner.innerHTML += `
+                <div class="card rounded" data-folder="${folder}">
+                    <div class="play">
+                        <img src="img/playButton2.svg" alt="">
+                    </div>
+                    <img class="rounded" width="160px" height="160px" src="/songs/${folder}/cover.jpg" alt="card">
                     <h2>${responses.title}</h2>
                     <p>${responses.description}</p>
-            </div>`
-
-
+                </div>
+            `;
         }
     }
-    // console.log(div);
+
     Array.from(document.getElementsByClassName("card")).forEach(e => {
-        e.addEventListener("click", async item => {
-            // console.log(e.dataset.folder);
-            
-            // console.log("YO");
-
-        
-            songs = await getSongs(e.dataset.folder)
-
+        e.addEventListener("click", async () => {
+            songs = await getSongs(e.dataset.folder);
             songUL.innerHTML = "";
             is = true;
             helper();
-            playSong(songs[0])
-
-        })
-    })
-
+            playSong(songs[0]);
+        });
+    });
 }
+
 async function main() {
     
     displayAlbum();
