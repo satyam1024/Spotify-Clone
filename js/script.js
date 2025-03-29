@@ -28,7 +28,7 @@ function secondToMinuteSecond(seconds) {
 async function getSongs(folder) {
 
     currFolder = folder;
-    let a = await fetch(`/songs/${folder}/`)
+    let a = await fetch(`https://capable-marshmallow-1396b2.netlify.app/songs/${folder}/`)
     let responses = await a.text();
 
 
@@ -56,7 +56,7 @@ function playSong(track, pause = false) {
 
 
     track = track.replaceAll("%20", " ").replaceAll(".mp3", "")
-    curSong.src = `/songs/${currFolder}/` + track + ".mp3";
+    curSong.src = `https://capable-marshmallow-1396b2.netlify.app/songs/${currFolder}/` + track + ".mp3";
 
     play.src = "img/play-button2.svg"
     if (!pause) {
@@ -114,9 +114,11 @@ async function helper() {
     })
 }
 
+
+
 async function displayAlbum() {
     // currFolder = folder;
-    let a = await fetch(`/songs/`)
+    let a = await fetch(`https://capable-marshmallow-1396b2.netlify.app/songs/`)
     // console.log(a)
     let responses = await a.text();
 
@@ -133,7 +135,7 @@ async function displayAlbum() {
             let folder = (e.href.split('/').splice(-2)[0]);
             //Now get metadeta of the folder
 
-            let a = await fetch(`/songs/${folder}/info.json`)
+            let a = await fetch(`https://capable-marshmallow-1396b2.netlify.app/songs/${folder}/info.json`)
             let responses = await a.json();
             // console.log(responses)
 
