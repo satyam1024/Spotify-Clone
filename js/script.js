@@ -19,8 +19,8 @@ function secondToMinuteSecond(seconds) {
     const formatedMinutes = String(minutes).padStart(2, '0');
     const formatedSeconds = String(remainingSeconds).padStart(2, '0');
 
-    // console.log(formatedMinutes);
-    // console.log(formatedSeconds)
+    console.log(formatedMinutes);
+    console.log(formatedSeconds)
 
     return `${formatedMinutes}:${formatedSeconds} `;
 
@@ -28,17 +28,17 @@ function secondToMinuteSecond(seconds) {
 async function getSongs(folder) {
 
     currFolder = folder;
-    let a = await fetch(`./songs/${folder}/`)
+    let a = await fetch(`../songs/${folder}/`)
     let responses = await a.text();
 
 
-    // console.log(responses)
+    console.log(responses)
 
     let div = document.createElement("div")
 
     div.innerHTML = responses;
     let as = div.getElementsByTagName("a");
-    // console.log(as);
+    console.log(as);
 
     let len = as.length;
 
@@ -46,7 +46,7 @@ async function getSongs(folder) {
     for (let i = 0; i < len; i++) {
         const element = as[i];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`/${folder}/`)[1])
+            songs.push(element.href.split(`../${folder}/`)[1])
         }
     }
     return songs
@@ -58,10 +58,10 @@ function playSong(track, pause = false) {
     track = track.replaceAll("%20", " ").replaceAll(".mp3", "")
     curSong.src = `./songs/${currFolder}/` + track + ".mp3";
 
-    play.src = "img/play-button2.svg"
+    play.src = "./img/play-button2.svg"
     if (!pause) {
         curSong.play();
-        play.src = "img/pause.svg"
+        play.src = "./img/pause.svg"
     }
     document.querySelector(".songinfo").innerHTML = track;
     document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
@@ -80,7 +80,7 @@ async function helper() {
     for (const song of songs) {
 
         songUL.innerHTML = songUL.innerHTML + `<li>
-                        <img class="invert" src="img/music.svg" alt="Music">
+                        <img class="invert" src="../img/music.svg" alt="Music">
                         <div class="info">
                             <div>${song.replaceAll("%20", " ").replaceAll(".mp3", "")}</div>
                             <div>Akash</div>
@@ -88,7 +88,7 @@ async function helper() {
 
                         <div class="playNow">
                             <span>Play Now</span>
-                            <img class="invert" src="img/play-button.svg" alt="Play">
+                            <img class="invert" src="../img/play-button.svg" alt="Play">
 
                         </div>
                        
@@ -118,8 +118,8 @@ async function helper() {
 
 async function displayAlbum() {
     // currFolder = folder;
-    let a = await fetch(`./songs/`)
-    // console.log(a)
+    let a = await fetch(`../songs/`)
+    console.log(a)
     let responses = await a.text();
 
     let div = document.createElement("div")
@@ -131,11 +131,11 @@ async function displayAlbum() {
 
     for(let i =0; i<array.length; i++){
         const e = array[i];
-        if (e.href.includes("./songs")) {
+        if (e.href.includes("../songs")) {
             let folder = (e.href.split('/').splice(-2)[0]);
             //Now get metadeta of the folder
 
-            let a = await fetch(`./songs/${folder}/info.json`)
+            let a = await fetch(`../songs/${folder}/info.json`)
             let responses = await a.json();
             // console.log(responses)
 
@@ -144,7 +144,7 @@ async function displayAlbum() {
             cardContiner.innerHTML = cardContiner.innerHTML + `<div class="card rounded" data-folder="${folder}">
 
                 <div class="play">
-                    <img  src="img/playButton2.svg" alt="">
+                    <img  src="../img/playButton2.svg" alt="">
                 </div>
                 <img class="rounded" width="160px" height="160px" src="./songs/${folder}/cover.jpg" alt="card">
                     <h2>${responses.title}</h2>
@@ -190,11 +190,11 @@ async function main() {
 
         if (curSong.paused) {
             curSong.play();
-            play.src = "img/pause.svg"
+            play.src = "../img/pause.svg"
         }
         else {
             curSong.pause();
-            play.src = "img/play-button2.svg"
+            play.src = "../img/play-button2.svg"
         }
     })
 
