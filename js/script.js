@@ -21,11 +21,11 @@ function secondToMinuteSecond(seconds) {
   return `${formattedMinutes}:${formattedSeconds}`;
 }
 
-// Utility function to load content using XMLHttpRequest
+// Load content with adjusted path for script folder
 function loadContent(url, responseType = "text") {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
+    xhr.open("GET", `../${url}`, true);  // Added ../ to move up one level
     xhr.responseType = responseType;
 
     xhr.onload = () => {
@@ -41,7 +41,7 @@ function loadContent(url, responseType = "text") {
   });
 }
 
-// Get songs from folder using AJAX
+// Get songs from folder
 async function getSongs(folder) {
   currFolder = folder;
 
@@ -67,18 +67,20 @@ async function getSongs(folder) {
 // Play a song
 function playSong(track, pause = false) {
   track = track.replaceAll("%20", " ").replaceAll(".mp3", "");
-  curSong.src = `songs/${currFolder}/` + track + ".mp3";
 
-  document.getElementById("play").src = "img/play-button2.svg";
+  // Use ../ to access songs folder from script folder
+  curSong.src = `../songs/${currFolder}/` + track + ".mp3";  
+
+  document.getElementById("play").src = "../img/play-button2.svg";
   if (!pause) {
     curSong.play();
-    document.getElementById("play").src = "img/pause.svg";
+    document.getElementById("play").src = "../img/pause.svg";
   }
   document.querySelector(".songinfo").innerHTML = track;
   document.querySelector(".songtime").innerHTML = "00:00 / 00:00";
 }
 
-// Initialize songs and display them in the UI
+// Initialize and display songs
 async function helper() {
   if (!is) {
     songs = await getSongs("Justin-Bieber");
@@ -90,14 +92,14 @@ async function helper() {
   for (const song of songs) {
     songUL.innerHTML += `
       <li>
-        <img class="invert" src="img/music.svg" alt="Music">
+        <img class="invert" src="../img/music.svg" alt="Music">
         <div class="info">
           <div>${song.replaceAll("%20", " ").replaceAll(".mp3", "")}</div>
           <div>Akash</div>
         </div>
         <div class="playNow">
           <span>Play Now</span>
-          <img class="invert" src="img/play-button.svg" alt="Play">
+          <img class="invert" src="../img/play-button.svg" alt="Play">
         </div>
       </li>`;
   }
@@ -131,9 +133,9 @@ async function displayAlbum() {
           cardContainer.innerHTML += `
             <div class="card rounded" data-folder="${folder}">
               <div class="play">
-                <img src="img/playButton2.svg" alt="">
+                <img src="../img/playButton2.svg" alt="">
               </div>
-              <img class="rounded" width="160px" height="160px" src="songs/${folder}/cover.jpg" alt="card">
+              <img class="rounded" width="160px" height="160px" src="../songs/${folder}/cover.jpg" alt="card">
               <h2>${meta.title}</h2>
               <p>${meta.description}</p>
             </div>`;
@@ -171,10 +173,10 @@ async function main() {
   play.addEventListener("click", () => {
     if (curSong.paused) {
       curSong.play();
-      play.src = "img/pause.svg";
+      play.src = "../img/pause.svg";
     } else {
       curSong.pause();
-      play.src = "img/play-button2.svg";
+      play.src = "../img/play-button2.svg";
     }
   });
 
