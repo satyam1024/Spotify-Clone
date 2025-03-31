@@ -19,8 +19,8 @@ function secondToMinuteSecond(seconds) {
     const formatedMinutes = String(minutes).padStart(2, '0');
     const formatedSeconds = String(remainingSeconds).padStart(2, '0');
 
-    console.log(formatedMinutes);
-    console.log(formatedSeconds)
+    // console.log(formatedMinutes);
+    // console.log(formatedSeconds)
 
     return `${formatedMinutes}:${formatedSeconds} `;
 
@@ -28,11 +28,11 @@ function secondToMinuteSecond(seconds) {
 async function getSongs(folder) {
 
     currFolder = folder;
-    let a = await fetch(`/Spotify-Clone/songs/${folder}/`)
+    let a = await fetch(`https://akashbhardwaj0703.github.io/Spotify-Clone/songs/${folder}/`)
     let responses = await a.text();
 
 
-    console.log(responses)
+    // console.log(responses)
 
     let div = document.createElement("div")
 
@@ -56,7 +56,7 @@ function playSong(track, pause = false) {
 
 
     track = track.replaceAll("%20", " ").replaceAll(".mp3", "")
-    curSong.src = `/Spotify-Clone/songs/${currFolder}/` + track + ".mp3";
+    curSong.src = `https://akashbhardwaj0703.github.io/Spotify-Clone/songs/${currFolder}/` + track + ".mp3";
 
     play.src = "img/play-button2.svg"
     if (!pause) {
@@ -118,7 +118,7 @@ async function helper() {
 
 async function displayAlbum() {
     // currFolder = folder;
-    let a = await fetch(`/Spotify-Clone/songs/`)
+    let a = await fetch(`https://akashbhardwaj0703.github.io/Spotify-Clone/songs/`)
     // console.log(a)
     let responses = await a.text();
 
@@ -131,11 +131,11 @@ async function displayAlbum() {
 
     for(let i =0; i<array.length; i++){
         const e = array[i];
-        if (e.href.includes("/songs")) {
+        if (e.href.includes("https://akashbhardwaj0703.github.io/Spotify-Clone/songs")) {
             let folder = (e.href.split('/').splice(-2)[0]);
             //Now get metadeta of the folder
 
-            let a = await fetch(`/Spotify-Clone/songs/${folder}/info.json`)
+            let a = await fetch(`https://akashbhardwaj0703.github.io/Spotify-Clone/songs/${folder}/info.json`)
             let responses = await a.json();
             // console.log(responses)
 
@@ -146,7 +146,7 @@ async function displayAlbum() {
                 <div class="play">
                     <img  src="img/playButton2.svg" alt="">
                 </div>
-                <img class="rounded" width="160px" height="160px" src="/songs/${folder}/cover.jpg" alt="card">
+                <img class="rounded" width="160px" height="160px" src="https://akashbhardwaj0703.github.io/Spotify-Clone/songs/${folder}/cover.jpg" alt="card">
                     <h2>${responses.title}</h2>
                     <p>${responses.description}</p>
             </div>`
@@ -300,5 +300,4 @@ async function main() {
 
 }
 main()
-
 
